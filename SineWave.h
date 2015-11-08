@@ -13,14 +13,15 @@
  
 #ifndef SineWave_h
 #define SineWave_h
-
+ 
 #include <TimerOne.h>
+#define OUTPIN 	9
 
 class SineWave{
   private:
 	const float pi = 3.14159 ;
     const float A = 490 ;  
-    int _pin = 9 ;
+    int _pin = OUTPIN ;
     int _T = 50 ;  
     float omega, omega2, c1,  c1b;
     volatile float a[3], b[3] ;
@@ -38,4 +39,6 @@ class SineWave{
     void compute2(void);
 		
 };
+
+extern SineWave sw;
 #endif

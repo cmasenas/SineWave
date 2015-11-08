@@ -11,8 +11,8 @@
  *	That's all I ask.
  */
  
-#include <TimerOne.h>
 #include <SineWave.h>
+#include <TimerOne.h>
 
 extern "C" {
 void external_compute(void);
@@ -20,7 +20,8 @@ void external_compute2(void);
 }
 
 void SineWave::begin(){
-    Timer1.initialize(_T);  // set sample time for discrete tone signal
+
+	Timer1.initialize(_T);  // set sample time for discrete tone signal
     Timer1.pwm(_pin, 0,_T);
        // "external_compute" is an external function that calls a member function
        // this is a workaround because a member function cannot be called directly
@@ -117,7 +118,8 @@ void SineWave::playTone(int freq, int duration){
      Timer1.setPwmDuty(_pin, a[2]+b[2]+512);
    }  
    
-extern SineWave sw;
+//extern SineWave sw;
+SineWave sw;
 
 void external_compute(void){
   sw.compute();
