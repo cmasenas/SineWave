@@ -15,6 +15,7 @@
 #define SineWave_h
  
 #include <TimerOne.h>
+
 #define OUTPIN 	9
 
 class SineWave{
@@ -22,21 +23,22 @@ class SineWave{
 	const float pi = 3.14159 ;
     const float A = 490 ;  
     int _pin = OUTPIN ;
-    int _T = 50 ;  
-    float omega, omega2, c1,  c1b;
+    float _T = 60/1000000.0 ;  
+    float c1,  c1b, c0;
     volatile float a[3], b[3] ;
 
   public:
-    void begin(void);
-    void setInterval(int interval);
+    void setInterval(float interval);
     void setPin(int pin);
-    void playTone(int freq, int duration);
-    void playTone(int freq);
-    void playTone2(int freq1, int freq2, int duration);
-    void playTone2(int freq1, int freq2);
+    void playTone(float freq, int duration);
+    void playTone(float freq);
+    void playTone2(float freq1, float freq2, int duration);
+    void playTone2(float freq1, float freq2);
+    void playToneDecay(float freq, float tau);		// play a tone with decaying amplitude of time constant tau
     void stopTone(void);
-    void compute(void);
-    void compute2(void);
+    void compute(void);							// computes a sine tone
+    void compute2(void);						// computes two tones simultaneously
+    void compute_decay(void);					// computes a decaying sinewave
 		
 };
 
