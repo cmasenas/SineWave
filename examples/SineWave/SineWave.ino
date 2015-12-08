@@ -1,11 +1,10 @@
 #include <SineWave.h>
 #include <TimerOne.h>
 
-SineWave sw;
-
 void setup()                 
 {
-  sw.begin();
+  sw.setInterval(50);
+  sw.setPin(9);
 
 }
 
@@ -18,7 +17,7 @@ void loop()
     sw.playTone2(500, 500+i*10, 500);    
   }
   sw.stopTone();
-  sw.setInterval(50);
+  sw.setInterval(60);
   sw.playTone2(500, 600);
   delay(1000);
   sw.stopTone();
