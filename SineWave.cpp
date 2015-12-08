@@ -25,7 +25,7 @@ void external_compute_decay(void);
 
 
 void SineWave::setInterval(float T){
-	Timer1.setPeriod(T);
+	Timer1.initialize(T);
     _T = T/1000000.0 ;
 }
 
